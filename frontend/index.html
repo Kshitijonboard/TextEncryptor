@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Encryption</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover; 
+            color: #538392;
+            background-image: url('image.jpg');
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: #1A2130; 
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            box-sizing: border-box;
+            color: #fff;
+            margin-left: 40%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+            background-color: whitesmoke;
+            color: black;
+            box-sizing: border-box;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #5a67d8;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #4c51bf;
+        }
+
+        button:active {
+            background-color: #434190;
+        }
+
+        #result {
+            margin-top: 15px;
+            min-height: 40px;
+            padding: 12px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        #result.decrypted {
+            background-color: rgba(173, 255, 173, 0.2);
+        }
+
+        #result.encrypted {
+            background-color: rgba(255, 173, 173, 0.2);
+        }
+    </style>
+    <div class="container">
+        <h1>Text Encryptor</h1>
+        <textarea id="inputText" placeholder="Enter text here..."></textarea>
+        <select id="algorithm">
+            <option value="aes">AES</option>
+            <option value="rsa">RSA</option>
+        </select>
+        <button onclick="encryptText()">Encrypt</button>
+        <textarea id="outputText" placeholder="Encrypted text..." readonly></textarea>
+        <button onclick="decryptText()">Decrypt</button>
+        <textarea id="decryptedText" placeholder="Decrypted text..." readonly></textarea>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
