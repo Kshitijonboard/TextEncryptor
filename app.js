@@ -8,15 +8,22 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-
+// Serve static files from the 'frontend' directory
 app.use(express.static('frontend'));
 
-
+// RSA keys
 const { publicKey, privateKey } = generateRSAKeys();
 
+// AES and DES keys
 const aesKey = crypto.randomBytes(32);
 const desKey = crypto.randomBytes(8);
 
+// Route to handle GET requests to the root URL
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/frontend/index.html');
+});
+
+// Route to handle encryption requests
 app.post('/encrypt', (req, res) => {
     const { text, algorithm } = req.body;
     let encrypted;
@@ -38,7 +45,7 @@ app.post('/encrypt', (req, res) => {
     res.json({ encrypted });
 });
 
-
+// Route to handle decryption requests
 app.post('/decrypt', (req, res) => {
     const { text, algorithm } = req.body;
     let decrypted;
@@ -60,7 +67,7 @@ app.post('/decrypt', (req, res) => {
     res.json({ decrypted });
 });
 
-
+// Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
